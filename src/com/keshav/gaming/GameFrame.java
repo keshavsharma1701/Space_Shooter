@@ -11,7 +11,7 @@ public class GameFrame extends JFrame implements Constants{
 		Board board = new Board();
 		this.setSize(BOARD_WIDTH,BOARD_HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Space Ship Game - 2022");
+		setTitle("Space Ship Game");
 		setLocationRelativeTo(null);
 		setResizable(false);
 		add(board);

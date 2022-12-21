@@ -31,6 +31,7 @@ public class Board extends JPanel implements Constants{
 	Player player;
 	PlayerLine playerLine;
 	Enemy enemies[][];
+	Sound sound;
 	int count,c;
 	String gameMessage="Game Start";
 	public Board() throws Exception{
@@ -43,6 +44,7 @@ public class Board extends JPanel implements Constants{
 		enemies = new Enemy[MAX_ROWS][MAX_ENEMIES];
 		loadEnemies();
 		setFocusable(true);
+		sound = new Sound();
 		bindEvents();
 		gameLoop();
 	}
@@ -60,6 +62,8 @@ public class Board extends JPanel implements Constants{
 		for(int j=0;j<MAX_ENEMIES;j++) {
 			if(isCollide(playerLine , enemies[i][j])) {
 				gameMessage = "Game Over";
+				sound.setChecksound("siren");
+				sound.soundplay();
 				timer.stop();
 			}
 		}
@@ -70,6 +74,8 @@ public class Board extends JPanel implements Constants{
 				if(enemies[i][j].isAlive) {
 				if(isCollide(enemies[i][j], missile)) {
 					enemies[i][j].setisAlive(false);
+					sound.setChecksound("enemydie");
+					sound.soundplay();
 					missile.setUsed(true);
 				}
 			}
@@ -108,6 +114,8 @@ public class Board extends JPanel implements Constants{
 				else if(e.getKeyCode()== KeyEvent.VK_UP) {
 					try {
 						player.addMissile(player.getX() + (player.getW()/2), player.getY());
+						sound.setChecksound("weapon");
+						sound.soundplay();
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

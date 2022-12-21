@@ -4,10 +4,10 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public abstract class Sprite {
-	int x;
-	int y;
-	int w;
-	int h;
+	protected int x;
+	protected int y;
+	protected int w;
+	protected int h;
 	BufferedImage bi;
 	int speed;
 	public int getX() {
